@@ -1,14 +1,5 @@
 
-#Multiple linear regression to determine the important variables for train delay
-##Variables used for computation-
- #1.weather visibility(origin and destination)
- #2.weather temperature(origin and destination)
- #3.weather total precipitation rate(origin and destination)
- #4.Journey stop count
- #5.weather wind speed(origin and destination)
- #6.weather wind gust speed(origin and destination)
- #7.weather cloud cover(origin and destination)
-                    
+#Multiple regression to determine train delay given 46 factors                
 library(MASS)
 library(caret)
 library(xlsx)
@@ -19,9 +10,8 @@ a<-read.csv("TSC_430.csv",sep=",")
 b<-read.csv("TSC_Meta_data",sheet="Sheet2",header=TRUE)
 
 
-colnames(a)<-b[,1]
-#Removing the insignificant variables 
-anew2<-a[,-c(1:11,13,14,16,17,23,24,25,27,28,34,35,36,39,40,41,42,45,46,47,48)]
+colnames(a)<-b[,2]
+#Averaging factors of precipitation, visibility, etc at the origin and destination
 anew2<- transform(anew2, journey_average_precipitation = rowMeans(anew2[,c(2,8)], na.rm = TRUE))
 anew2<- transform(anew2, journey_average_temperature = rowMeans(anew2[,c(3,9)], na.rm = TRUE))
 anew2<- transform(anew2, journey_average_cloud_cover = rowMeans(anew2[,c(4,10)], na.rm = TRUE))
