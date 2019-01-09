@@ -1,5 +1,5 @@
 
-#Multiple regression to determine train delay given 46 factors                
+#ultiple Linear/Non-linear regression to determine train delay given 46 factors                
 library(MASS)
 library(caret)
 library(xlsx)
